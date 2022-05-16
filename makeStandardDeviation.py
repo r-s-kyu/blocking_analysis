@@ -9,20 +9,20 @@ from datetime import date
 import os
 import matplotlib.pyplot as plt
 
-
-pcord = np.array([1000,975,950,925,900,875,850,825,800,775,750,700,
-        650,600,550,500,450,400,350,300,250,225,200,175,150,125,100,70,
-        50,30,20,10,7,5,3,2,1])
-
-
+# ==========初期値============
 startMonth = 9
 endMonth = 11
 syear = 2010
 eyear = 2020
 name = 'hgt'
-kind = 'std'
-prsInd = 15
+prsInd = 31
 meanLat = [-60,-50]
+
+# ===========定数================
+pcord = np.array([1000,975,950,925,900,875,850,825,800,775,750,700,
+        650,600,550,500,450,400,350,300,250,225,200,175,150,125,100,70,
+        50,30,20,10,7,5,3,2,1])
+kind = 'std'
 grid = 1.25
 phicord = np.arange(-90,91,grid)*(math.pi/180.)
 xcord = np.arange(-180,181,grid)
@@ -229,7 +229,7 @@ def draw(array_2d,title,allMonthNum, monthNum,picturename,alllon):
 def main():
     allMonthNum, monthNum = yNum()
     characterMLR = character(meanLat)
-    savename = f'D:/data/JRA55/{name}/{syear}-{eyear}/{syear}-{eyear}_{characterMLR[0]}-{characterMLR[1]}_{name}_{kind}.npy'
+    savename = f'D:/data/JRA55/{name}/{syear}-{eyear}/{syear}-{eyear}_{characterMLR[0]}-{characterMLR[1]}_{prs}hPa_{name}_{kind}.npy'
     
     if not os.path.exists(savename):
         std_2d =  calStDev(name,syear,eyear,savename)
